@@ -11,4 +11,4 @@ Price Format
 
 Демо:
 
-http://jsfiddle.net/fKS52/
+http://jsfiddle.net/fKS52/1/
