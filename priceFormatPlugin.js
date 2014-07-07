@@ -1,4 +1,4 @@
-(function ($) {
+    (function ($) {
         // узнать позицию курсора
         $.fn.getCursorPosition = function () {
             var input = this.get(0);
@@ -61,12 +61,14 @@
                         var code = event.keyCode;
                         var startValue = $(this).val();
                         if ((event.ctrlKey === true && code == 86) || // Ctrl+V | Shift+insert
+                            (event.metaKey === true && code == 86) || 
                                 (event.shiftKey === true && code == 45)) {
                             return false;
                         } else if (
                                 code == 9 || // tab
                                         code == 27 || // ecs
                                         event.ctrlKey === true || // все что вместе с ctrl
+                                        event.metaKey === true ||
                                         event.altKey === true || // все что вместе с alt
                                         event.shiftKey === true || // все что вместе с shift
                                         (code >= 112 && code <= 123) || // F1 - F12
@@ -116,13 +118,7 @@
                                 return false;
                             }
                             var length = startValue.length
-                            var value = '';
-                            for (var i = 0; i <= length; i++) {
-                                if (i == cursor) {
-                                    value += key;
-                                }
-                                value += startValue[i];
-                            }
+                            var value = startValue.substr(0, cursor) + key + startValue.substring(cursor, startValue.length);
                             $(this).val(priceFormatted(value));
                             $(this).setCursorPosition(cursor + $(this).val().length - startValue.length);
                         }
@@ -130,3 +126,7 @@
                     });
         };
     })(jQuery);
+
+    $(document).ready(function () {
+        $('.money-format').priceFormat();
+    });
