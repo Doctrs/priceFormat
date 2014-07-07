@@ -8,3 +8,7 @@ Price Format
 Использование:
 
         $('.any_class').priceFormat();
+
+Демо:
+
+http://jsfiddle.net/fKS52/
